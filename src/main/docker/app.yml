@@ -1,0 +1,14 @@
+version: '2'
+services:
+    proyecto-app:
+        image: proyecto
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://proyecto-postgresql:5432/proyecto
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    proyecto-postgresql:
+        extends:
+            file: postgresql.yml
+            service: proyecto-postgresql
